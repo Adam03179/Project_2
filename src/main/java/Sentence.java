@@ -8,7 +8,7 @@ import java.util.*;
  * @author Igor Gerasymenko
  * @version 1.0
  */
-public class Sentence extends Book {
+public class Sentence {
     /**
      * Array contains all sentences from the book
      */
@@ -17,8 +17,8 @@ public class Sentence extends Book {
     /**
      * Creates Sentence object, initializes the array
      */
-    public Sentence() {
-        this.allSentenceInBook = getBook().split("(?<=([.?!]\\s))(?=[A-Z])");
+    public Sentence(Book book) {
+        this.allSentenceInBook = book.getBook().split("(?<=([.?!]\\s))(?=[A-Z])");
     }
 
     public String[] getAllSentenceInBook() {

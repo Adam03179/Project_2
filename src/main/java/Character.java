@@ -6,7 +6,7 @@ package main.java;
  * @author Igor Gerasymenko
  * @version 1.0
  */
-public class Character extends Book {
+public class Character {
 
     /**
      * Array contains all characters from the book
@@ -16,8 +16,8 @@ public class Character extends Book {
     /**
      * Creates Character object, initializes the array
      */
-    public Character() {
-        allCharactersFromText = getBook().toCharArray();
+    public Character(Book book) {
+        allCharactersFromText =book.getBook().toCharArray();
     }
 
     public char[] getAllCharactersFromText() {

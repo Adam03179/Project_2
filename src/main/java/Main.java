@@ -12,12 +12,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Word word = new Word();
-        word.printWordsByAlphabet();
 
+        Book book = new Book();
 
-        Sentence sentence = new Sentence();
-        sentence.printSentencesByInAscendingOrder();
+        book.getSentences().printSentencesByInAscendingOrder();
+
+        book.getWords().printWordsByAlphabet();
 
     }
 }

@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author Igor Gerasymenko
  * @version 1.0
  */
-public class Word extends Book {
+public class Word {
     /**
      * Array contains all words from the book
      */
@@ -17,9 +17,9 @@ public class Word extends Book {
     /**
      * Creates Word object, initializes the array
      */
-    public Word() {
+    public Word(Book book) {
 
-        String temp = getBook().replaceAll("[^\\w|\\s]|\\\\|_|\\||\\d", "");
+        String temp = book.getBook().replaceAll("[^\\w|\\s]|\\\\|_|\\||\\d", "");
         temp = temp.replaceAll("\\s+", " ");
         allWordsFromBook = temp.split(" ");
     }
