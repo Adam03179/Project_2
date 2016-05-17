@@ -45,7 +45,11 @@ public class Sentence implements Comparable {
         }
 
 
-        String[] temp = this.strSent.split(" ");
+        String exceptSymbols = this.strSent.replaceAll("\\W"," ");
+        exceptSymbols = exceptSymbols.replaceAll("\\d+", " ");
+        exceptSymbols = exceptSymbols.replaceAll("\\s+", " ");
+
+        String[] temp = exceptSymbols.split(" ");
 
         words = new Word[temp.length];
 
