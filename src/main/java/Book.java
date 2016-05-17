@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.*;
 
 /**
  * This class contains a book
@@ -21,20 +22,36 @@ public class Book {
     /**
      * Contains all sentences from the book
      */
-    private Sentence sentences;
+    private List<Sentence> sentences;
 
     /**
      * Contains all words from the book
      */
-    private Word words;
+    private List<Word> words;
 
     /**
      * Creates Book-object, loading text with loadFromFile() help
+     * initializes all private lists
      */
     public Book() {
         this.book = loadFromFile();
-        this.sentences = new Sentence(this);
-        this.words = new Word(this);
+
+        String[] temp = getBook().split("(?<=([.?!]\\s))(?=[A-Z])");
+
+        this.sentences = new ArrayList<>();
+        for (int i = 0; i < temp.length; i++) {
+            sentences.add(new Sentence(temp[i]));
+        }
+
+        String tempStr = getBook().replaceAll("[^\\w|\\s]|\\\\|_|\\||\\d", "");
+        tempStr = tempStr.replaceAll("\\s+", " ");
+
+        temp = tempStr.split(" ");
+        this.words = new ArrayList<>();
+        for (int i = 0; i < temp.length; i++) {
+            words.add(new Word(temp[i]));
+        }
+
 
     }
 
@@ -52,21 +69,41 @@ public class Book {
         this.book = book;
     }
 
-    public Sentence getSentences() {
-        return sentences;
+
+    /**
+     * Displays all sentences from the book to the screen, by length
+     */
+    public void printSentencesByInAscendingOrder() {
+        Collections.sort(sentences);
+
+        for (Sentence sentence : sentences) {
+            System.out.println(sentence.getStrSent());
+        }
     }
 
-    public void setSentences(Sentence sentences) {
-        this.sentences = sentences;
+    /**
+     * Displays all words from the book to the screen, by alphabet
+     */
+    public void printWordsByAlphabet() {
+        String[] temp = new String[words.size()];
+
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = words.get(i).getStrWord().toLowerCase();
+        }
+
+        Arrays.sort(temp);
+
+        for (int i = 0; i < temp.length - 1; i++) {
+            if (temp[i].toCharArray()[0] == temp[i + 1].toCharArray()[0]) {
+                System.out.print(temp[i] + " ");
+            } else {
+                System.out.println();
+            }
+
+        }
+
     }
 
-    public Word getWords() {
-        return words;
-    }
-
-    public void setWords(Word words) {
-        this.words = words;
-    }
 
     /**
      * Method reads text from a file, and writes it in String

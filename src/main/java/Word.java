@@ -9,49 +9,40 @@ import java.util.Arrays;
  * @version 1.0
  */
 public class Word {
+
     /**
-     * Array contains all words from the book
+     * Array consist from all characters in this word
      */
-    private String[] allWordsFromBook;
+    private Character[] characters;
+
+    /**
+     * This word in String format
+     */
+    private String strWord;
 
     /**
      * Creates Word object, initializes the array
      */
-    public Word(Book book) {
+    public Word(String str) {
 
-        String temp = book.getBook().replaceAll("[^\\w|\\s]|\\\\|_|\\||\\d", "");
-        temp = temp.replaceAll("\\s+", " ");
-        allWordsFromBook = temp.split(" ");
-    }
+        this.strWord = str;
 
-    public String[] getAllWordsFromBook() {
-        return allWordsFromBook;
-    }
+        this.characters = new Character[strWord.length()];
 
-    public void setAllWordsFromBook(String[] allWordsFromBook) {
-        this.allWordsFromBook = allWordsFromBook;
-    }
+        for(int i = 0; i < characters.length; i++){
 
-    /**
-     * Displays all words from the book to the screen, by alphabet
-     */
-    public void printWordsByAlphabet() {
-        String[] temp = new String[allWordsFromBook.length];
-
-        for (int i = 0; i < allWordsFromBook.length; i++) {
-            temp[i] = allWordsFromBook[i].toLowerCase();
-        }
-
-        Arrays.sort(temp);
-
-        for (int i = 0; i < temp.length - 1; i++) {
-            if (temp[i].toCharArray()[0] == temp[i + 1].toCharArray()[0]) {
-                System.out.print(temp[i] + " ");
-            } else {
-                System.out.println();
-            }
-
+            characters[i] = new Character(strWord.charAt(i));
         }
 
     }
+
+    public String getStrWord() {
+        return strWord;
+    }
+
+    public void setStrWord(String strWord) {
+        this.strWord = strWord;
+    }
+
+
 }

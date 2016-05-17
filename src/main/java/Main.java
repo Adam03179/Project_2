@@ -15,9 +15,7 @@ public class Main {
 
         Book book = new Book();
 
-        book.getSentences().printSentencesByInAscendingOrder();
-
-        book.getWords().printWordsByAlphabet();
-
+        book.printSentencesByInAscendingOrder();
+        book.printWordsByAlphabet();
     }
 }

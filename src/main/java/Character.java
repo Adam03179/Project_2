@@ -8,23 +8,20 @@ package main.java;
  */
 public class Character {
 
-    /**
-     * Array contains all characters from the book
-     */
-    private char[] allCharactersFromText;
+    private char character;
 
     /**
-     * Creates Character object, initializes the array
+     * Creates Character object
      */
-    public Character(Book book) {
-        allCharactersFromText =book.getBook().toCharArray();
+    public Character(char character) {
+        this.character = character;
     }
 
-    public char[] getAllCharactersFromText() {
-        return allCharactersFromText;
+    public char getCharacter() {
+        return character;
     }
 
-    public void setAllCharactersFromText(char[] allCharactersFromText) {
-        this.allCharactersFromText = allCharactersFromText;
+    public void setCharacter(char character) {
+        this.character = character;
     }
 }
